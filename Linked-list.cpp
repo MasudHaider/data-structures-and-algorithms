@@ -121,13 +121,13 @@ class LinkedList
     }
 };
 
-int main()
-{
-
-    LinkedList listobj;
-    listobj.CreateNode(12);
-    listobj.CreateNode(40);
-    listobj.PrintList();
-
-    return 0;
-}
+//int main()
+//{
+//
+//    LinkedList listobj;
+//    listobj.CreateNode(12);
+//    listobj.CreateNode(40);
+//    listobj.PrintList();
+//
+//    return 0;
+//}
