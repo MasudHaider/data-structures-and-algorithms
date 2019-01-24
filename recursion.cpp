@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
+
 int moves = 0;
+
 void TowerOfHanoi(int n, char from, char to, char via)
 {
     moves++;
