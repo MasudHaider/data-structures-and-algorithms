@@ -15,7 +15,7 @@ void printLinkedListForward();
 void insertAtTail(int val);
 void insertAtFront(int val);
 void insertAtMiddle(int val, int pos);
-
+void deleteDoublylist(int pos);
 
 int main()
 {
@@ -24,7 +24,10 @@ int main()
     insertAtTail(a);
     insertAtTail(b);
     insertAtFront(c);
+    printLinkedListForward();
     insertAtMiddle(d,2);
+    printLinkedListForward();
+    deleteDoublylist(9);
     printLinkedListForward();
 
     return 0;
@@ -98,6 +101,49 @@ void insertAtMiddle(int val, int pos)
         temp->next->prev = newNode;
 
     temp->next = newNode;
+}
+
+void deleteDoublylist(int pos)
+{
+    if(head == NULL)  //list empty
+        return;
+
+    if(pos == 1)      //delete head node
+    {
+        head = head->next;
+
+        if(head->next == NULL)
+            tail = NULL;
+        else
+            head->next->prev = NULL;
+
+        return;
+    }
+    node *temp = (node *)malloc(sizeof(node));
+    node *tempAnother = (node *)malloc(sizeof(node));
+    int i = 1;
+    temp = head;
+
+    while((i < pos) && (temp->next != NULL))
+    {
+        temp = temp->next;
+        i++;
+    }
+
+    if(i == pos)
+    {
+        tempAnother = temp->prev;
+        tempAnother ->next = temp->next;
+
+        if(temp->next == NULL)     //temp is the last node
+            tail = tempAnother;
+        else
+            temp->next->prev = tempAnother;
+
+        free(temp);
+    }
+    else
+        printf("Position %d doesn't exist!\n\n",pos);
 }
 
 void printLinkedListForward()
